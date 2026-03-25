@@ -152,9 +152,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const serviceCards = document.querySelectorAll('.service-card');
     serviceCards.forEach(card => {
         card.addEventListener('click', () => {
-            window.location.href = 'gallery.html';
+            const category = card.getAttribute('data-category');
+            if (category) {
+                window.location.href = `gallery.html?category=${category}`;
+            } else {
+                window.location.href = 'gallery.html';
+            }
         });
     });
 
-});
+    // 7. Auto-scroll and filter gallery based on URL category
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category');
+    if (categoryParam) {
+        // Wait a bit to let other initialization finish and the DOM to be fully prepared
+        setTimeout(() => {
+            const filterBtn = document.querySelector(`.filter-btn[data-filter="${categoryParam}"]`);
+            if (filterBtn) {
+                // Trigger the filter
+                filterBtn.click();
+                
+                // Scroll to the gallery
+                const gallerySection = document.querySelector('.gallery-content');
+                if (gallerySection) {
+                    const navHeight = document.getElementById('mainNav')?.offsetHeight || 70;
+                    const offsetPosition = gallerySection.getBoundingClientRect().top + window.scrollY - navHeight - 20;
 
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        }, 300);
+    }
+});
