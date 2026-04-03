@@ -582,40 +582,50 @@ body.is-loaded .hero-content {
 /* Testimonials */
 .testimonials {
     padding: 120px 0;
-    background: linear-gradient(rgba(10, 10, 10, 0.92), rgba(10, 10, 10, 0.92)), url('Photos/event/DSC_0363.jpg') center/fixed no-repeat;
+    background: linear-gradient(rgba(10, 10, 10, 0.95), rgba(10, 10, 10, 0.90)), url('Photos/event/DSC_0363.jpg') center/fixed no-repeat;
+    background-size: cover;
 }
 
 .testimonial-card {
-    background-color: rgba(20, 20, 20, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    padding: 60px 40px 40px;
-    border-radius: 12px;
-    margin: 45px 15px 15px;
+    background: linear-gradient(145deg, rgba(30, 30, 30, 0.7) 0%, rgba(15, 15, 15, 0.8) 100%);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    padding: 65px 35px 40px;
+    border-radius: 24px;
+    margin-top: 50px; /* Accounts for the avatar popup */
+    margin-bottom: 20px;
+    height: calc(100% - 70px);
     position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s var(--ease-smooth);
+    display: flex;
+    flex-direction: column;
 }
 
 .testimonial-card:hover {
     transform: translateY(-8px);
     border-color: rgba(212, 175, 55, 0.5);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.1);
 }
 
 .client-avatar-wrapper {
     position: absolute;
-    top: -45px;
+    top: -50px;
     left: 50%;
     transform: translateX(-50%);
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     padding: 4px;
-    background: linear-gradient(135deg, var(--primary-color), #f79d00);
+    background: linear-gradient(135deg, var(--primary-color), #f79d00, #e65c00);
     z-index: 5;
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+    transition: transform 0.5s var(--ease-smooth);
+}
+
+.testimonial-card:hover .client-avatar-wrapper {
+    transform: translateX(-50%) scale(1.08);
 }
 
 .client-avatar {
@@ -623,47 +633,52 @@ body.is-loaded .hero-content {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid rgba(20, 20, 20, 1);
-    background-color: #121212;
+    border: 4px solid var(--bg-darker);
+    background-color: var(--bg-dark);
 }
 
 .testimonial-card::before {
     content: '\201C';
     font-family: var(--font-serif);
     position: absolute;
-    top: 10px;
-    left: 30px;
+    top: 25px;
+    left: 25px;
     font-size: 5rem;
-    color: rgba(212, 175, 55, 0.15);
+    color: rgba(212, 175, 55, 0.1);
     line-height: 1;
+    transition: color 0.5s var(--ease-smooth);
+}
+
+.testimonial-card:hover::before {
+    color: rgba(212, 175, 55, 0.25);
 }
 
 .testimonial-text {
-    font-size: 1.35rem;
+    font-size: 1.15rem;
     font-style: italic;
-    color: var(--text-main);
-    margin-bottom: 30px;
-    line-height: 1.7;
+    font-weight: 300;
+    color: #e6e6e6;
+    margin-bottom: 25px;
+    line-height: 1.8;
     position: relative;
     z-index: 1;
+    flex-grow: 1;
 }
 
 .client-name {
     font-family: var(--font-serif);
-    font-size: 1.4rem;
+    font-size: 1.25rem;
+    font-weight: 600;
     color: var(--primary-color);
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 0;
 }
 
-.carousel-indicators [data-bs-target] {
-    background-color: var(--text-muted);
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-}
-
-.carousel-indicators .active {
-    background-color: var(--primary-color);
+.rating {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: #f79d00;
 }
 
 /* Contact Section */
