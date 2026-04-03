@@ -249,7 +249,7 @@ body.is-loaded .navbar {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(10, 10, 10, 0.4), rgba(10, 10, 10, 0.8)), url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1800&auto=format&fit=crop&q=80') center/cover no-repeat;
+    background: linear-gradient(rgba(10, 10, 10, 0.2), rgba(10, 10, 10, 0.4)), url('cover.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     text-align: center;
