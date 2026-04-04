@@ -1341,50 +1341,57 @@ body.is-loaded .gallery-page-header .container {
 }
 
 /* Videos Section */
+.page-hero {
+    position: relative;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
 .videos-section {
+    background-color: var(--bg-darker);
     min-height: 80vh;
 }
 
-.video-card {
-    background-color: var(--bg-card);
+.modern-glass-card {
+    background: linear-gradient(145deg, rgba(30, 30, 30, 0.6) 0%, rgba(15, 15, 15, 0.9) 100%);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(212, 175, 55, 0.15);
     border-radius: 20px;
     overflow: hidden;
     position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     transition: transform 0.6s var(--ease-smooth), box-shadow 0.6s var(--ease-smooth), border-color 0.6s ease;
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-.video-card:hover {
+.modern-glass-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.15);
     border-color: rgba(212, 175, 55, 0.4);
 }
 
 .video-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
     overflow: hidden;
     background-color: #000;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
 }
 
-.video-card video,
-.video-card iframe {
+.video-wrapper iframe,
+.video-wrapper video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
     border: none;
+    object-fit: cover;
 }
 
-.video-content {
-    padding: 30px 25px;
+.video-info {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -1394,24 +1401,32 @@ body.is-loaded .gallery-page-header .container {
 }
 
 .video-title {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 12px;
-    color: var(--text-main);
+    color: var(--primary-color);
     font-family: var(--font-serif);
     transition: color 0.4s var(--ease-smooth);
     letter-spacing: 0.5px;
 }
 
-.video-card:hover .video-title {
-    color: var(--primary-color);
+.title-divider {
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .title-divider {
+        margin: 10px auto;
+    }
 }
 
 .video-desc {
     color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 1.05rem;
+    line-height: 1.8;
     margin-bottom: 0;
-    flex-grow: 1;
     font-weight: 300;
 }
