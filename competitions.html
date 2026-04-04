@@ -21,6 +21,41 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <!-- Lenis CSS -->
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.20/dist/lenis.css" />
+    <style>
+        /* Override competition image cropping to show real post size */
+        .competition-img-wrapper {
+            height: auto !important;
+            max-height: none !important;
+        }
+        .competition-img {
+            object-fit: contain !important;
+            height: auto !important;
+            width: 100% !important;
+        }
+        
+        /* Modal Custom Styles */
+        .competition-modal .modal-content {
+            background-color: var(--bg-card, #151515);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+        }
+        .competition-modal .modal-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .competition-modal .modal-title {
+            color: var(--primary-color, #d4af37);
+            font-family: var(--font-serif);
+        }
+        .competition-modal .modal-body {
+            color: var(--text-muted, #a8a8a8);
+            line-height: 1.8;
+            font-size: 0.95rem;
+            white-space: pre-wrap;
+        }
+        .competition-modal .modal-body strong {
+            color: var(--text-main, #fcfcfc);
+        }
+    </style>
 </head>
 
 <body class="is-loaded">
@@ -75,8 +110,8 @@
                                 shine brilliantly! Celebrate the festive season with joy and showcase their beautiful
                                 smiles.</p>
                             <div class="competition-action">
-                                <a href="#" class="btn btn-outline-primary">View Details</a>
-                                <a href="https://wa.me/94728666649" class="btn btn-primary">Register Now</a>
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalPost1">View Details</button>
+                                <a href="https://wa.me/94728666649" class="btn btn-primary">Send WhatsApp</a>
                             </div>
                         </div>
                     </div>
@@ -96,8 +131,8 @@
                                 you to participate in the Avurudu Kumariya Tharagaya to celebrate beauty, grace and
                                 tradition.</p>
                             <div class="competition-action">
-                                <a href="#" class="btn btn-outline-primary">View Details</a>
-                                <a href="https://wa.me/94728666649" class="btn btn-primary">Register Now</a>
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalPost2">View Details</button>
+                                <a href="https://wa.me/94728666649" class="btn btn-primary">Send WhatsApp</a>
                             </div>
                         </div>
                     </div>
@@ -105,6 +140,85 @@
             </div>
         </div>
     </section>
+
+    <!-- Modals -->
+    <!-- Modal for Competition 1 -->
+    <div class="modal fade competition-modal" id="modalPost1" tabindex="-1" aria-labelledby="modalPost1Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalPost1Label">Competition Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start" data-lenis-prevent>
+<strong>🌸 Online සිඟිති අවුරුදු කුමරා / කුමරිය තරඟය 2026 🌸</strong>
+Chanu Photography සමඟින්
+
+ඔබගේ පුංචි දරුවාට සිඟිති අවුරුදු කුමරා හෝ කුමරිය වීමට ලස්සන අවස්ථාවක්!
+
+<strong>📌 තරඟයට එක්වීමේ කොන්දේසි</strong>
+• ඔබගේ දරුවාගේ වයස අවුරුදු 10 ට අඩු විය යුතුයි
+• ඡායාරූප මාර්තු 31 දිනට පෙර WhatsApp (0728 6666 49) අංකයට එවිය යුතුයි
+• ඡායාරූප එවීමේදී නම සහ වයස සඳහන් කල යුතුයි
+• තරඟය Chanu Photography Facebook Page මඟින් පවත්වනු ලැබේ
+• සියලු යාවත්කාලීන කිරීම් Facebook page එක මඟින් දැනුම් දෙනු ඇත
+
+<strong>🏆 ජයග්‍රාහකයන් තේරීමේ ආකාරය</strong>
+• වැඩිම Likes / Reactions ලැබෙන ඡායාරූපය ජයග්‍රාහකයා වේ
+(සැ.යු. – Facebook Page එකේ පළකරන post එකට ලැබෙන reactions පමණක් සලකා බලනු ලැබේ)
+
+<strong>🏅 කාණ්ඩ</strong>
+👑 සිඟිති අවුරුදු කුමරා
+👑 සිඟිති අවුරුදු කුමරිය
+
+<strong>🎁 ත්‍යාග</strong>
+ජයග්‍රාහකයන්ට Chanu Photography විසින් Photoshoot 2ක් ලබාදේ
+                </div>
+                <div class="modal-footer" style="border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+                    <a href="https://wa.me/94728666649" class="btn btn-primary">Send WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Competition 2 -->
+    <div class="modal fade competition-modal" id="modalPost2" tabindex="-1" aria-labelledby="modalPost2Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalPost2Label">Competition Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start" data-lenis-prevent>
+<strong>🌸 ප්‍රථම වරට පැවැත්වෙන Online අවුරුදු කුමරිය තරඟය 2026 🌸</strong>
+Chanu Photography සමඟින්
+
+ඔබට අවුරුදු කුමරිය වීමට ලස්සන අවස්ථාවක්!
+
+<strong>📌 තරඟයට එක්වීමේ කොන්දේසි</strong>
+• ඡායාරූප අප්‍රේල් 05 දිනට පෙර WhatsApp අංකයට එවිය යුතුයි
+• 📱 WhatsApp: 0728 6666 49
+• 🔗 Link: https://wa.me/94728666649
+• ඡායාරූප එවීමේදී නම, ගම සහ වයස සඳහන් කල යුතුයි
+• තරඟය Chanu Photography Facebook Page මඟින් පවත්වනු ලැබේ
+• සියලු යාවත්කාලීන කිරීම් Facebook page එක මඟින් දැනුම් දෙනු ඇත
+
+<strong>🏆 ජයග්‍රාහිකාව තේරීමේ ආකාරය</strong>
+• වැඩිම Likes / Reactions ලැබෙන ඡායාරූපය අවුරුදු කුමරිය ලෙස තේරේ
+(සැ.යු. – Facebook Page එකේ පළ කරන post එකට ලැබෙන reactions පමණක් සලකා බලනු ලැබේ)
+
+<strong>🎁 ත්‍යාග</strong>
+🏆 ජයග්‍රාහිකාවට
+Chanu Photography විසින් Photoshoot එකක් ලබාදේ
+                </div>
+                <div class="modal-footer" style="border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+                    <a href="https://wa.me/94728666649" class="btn btn-primary">Send WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
