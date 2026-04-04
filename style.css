@@ -90,16 +90,16 @@ a:hover {
 }
 
 .btn-outline-primary {
-    color: #d4af37;
-    background-color: transparent;
-    border: 2px solid #d4af37;
+    color: #d4af37 !important;
+    background-color: transparent !important;
+    border: 2px solid #d4af37 !important;
     font-weight: 600;
     padding: 12px 30px;
     border-radius: 50px;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 0.9rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
     transition: all 0.6s var(--ease-smooth);
     position: relative;
     overflow: hidden;
@@ -113,25 +113,34 @@ a:hover {
     left: 0;
     width: 0%;
     height: 100%;
-    background: linear-gradient(135deg, #d4af37, #f79d00, #e65c00);
+    background: linear-gradient(135deg, #d4af37, #f79d00, #e65c00) !important;
     z-index: -1;
     transition: width 0.6s var(--ease-smooth);
 }
 
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+    color: #ffffff !important;
+    border-color: #d4af37 !important;
+    background-color: transparent !important;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4) !important;
+    outline: none !important;
+}
+
 .btn-outline-primary:hover {
-    color: #ffffff;
-    border-color: transparent;
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
     transform: translateY(-2px);
 }
 
-.btn-outline-primary:hover::before {
+.btn-outline-primary:hover::before,
+.btn-outline-primary:focus::before,
+.btn-outline-primary:active::before {
     width: 100%;
 }
 
 .btn-outline-primary:active {
     transform: translateY(1px);
-    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.2) !important;
 }
 
 /* Typography Utilities */
@@ -307,7 +316,7 @@ body.is-loaded .hero-content {
     font-weight: 500;
     letter-spacing: 5px;
     text-transform: uppercase;
-    color: var(--primary-color);
+    color: var(--text-main);
     margin-bottom: 25px;
     animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both 0.2s;
 }
@@ -593,7 +602,8 @@ body.is-loaded .hero-content {
     border: 1px solid rgba(212, 175, 55, 0.15);
     padding: 65px 35px 40px;
     border-radius: 24px;
-    margin-top: 50px; /* Accounts for the avatar popup */
+    margin-top: 50px;
+    /* Accounts for the avatar popup */
     margin-bottom: 20px;
     height: calc(100% - 70px);
     position: relative;
