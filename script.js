@@ -120,32 +120,81 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Scroll Animations using Intersection Observer
+    // 5. Scroll Animations Setup using AOS
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    
-    if ('IntersectionObserver' in window) {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px 100px 0px', // Trigger earlier for smoothness
-            threshold: 0.05
-        };
+    animatedElements.forEach(el => {
+        // Map common old classes to AOS attributes
+        if (el.classList.contains('fade-up')) el.setAttribute('data-aos', 'fade-up');
+        if (el.classList.contains('fade-right')) el.setAttribute('data-aos', 'fade-right');
+        if (el.classList.contains('fade-left')) el.setAttribute('data-aos', 'fade-left');
+        if (el.classList.contains('zoom-in')) el.setAttribute('data-aos', 'zoom-in');
+        
+        // Map delays
+        if (el.classList.contains('delay-100')) el.setAttribute('data-aos-delay', '100');
+        if (el.classList.contains('delay-200')) el.setAttribute('data-aos-delay', '200');
+        if (el.classList.contains('delay-300')) el.setAttribute('data-aos-delay', '300');
+        
+        // Default if it has no specific animation class
+        if (!el.hasAttribute('data-aos')) el.setAttribute('data-aos', 'fade-up');
+    });
 
-        const scrollObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
+    // Initialize AOS
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50
+        });
+    }
+
+    // Initialize Lenis for Smooth Scrolling
+    if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            wheelMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        });
+
+        // Keep AOS in sync with Lenis smooth scroll
+        lenis.on('scroll', () => {
+            if (typeof AOS !== 'undefined') AOS.refresh();
+        });
+
+        // Vanilla JS Parallax for Hero & Headers with caching for performance
+        const parallaxElements = document.querySelectorAll('.hero-content, .gallery-page-header .container');
+        
+        if (parallaxElements.length > 0) {
+            // Disable initial CSS transition after load to prevent conflict with JS scroll transforms
+            setTimeout(() => {
+                parallaxElements.forEach(el => el.style.transition = 'none');
+            }, 2500);
+
+            lenis.on('scroll', () => {
+                const scrollY = window.scrollY;
+                parallaxElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    // Basic viewport check for performance
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        // Smooth translate and fade out
+                        el.style.transform = `translateY(${scrollY * 0.35}px)`;
+                        el.style.opacity = Math.max(0, 1 - (scrollY / 400));
+                    }
+                });
             });
-        }, observerOptions);
+        }
 
-        animatedElements.forEach(el => {
-            scrollObserver.observe(el);
-        });
-    } else {
-        animatedElements.forEach(el => {
-            el.classList.add('is-visible');
-        });
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
     }
 
     // 6. Service Card Navigation
